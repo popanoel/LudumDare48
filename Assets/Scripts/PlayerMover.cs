@@ -21,7 +21,7 @@ public class PlayerMover : MonoBehaviour{
 
     // Update is called once per frame
     void Update(){
-        //_isBusy=GameManager.Instance._IsTalking;
+
         if(_isBusy){
             _H=0f;
             _V=0f;
@@ -38,9 +38,4 @@ public class PlayerMover : MonoBehaviour{
     }
 
 
-    public Vector3 GetMcPos {
-        get{
-            return transform.position;
-        }
-    }
 }

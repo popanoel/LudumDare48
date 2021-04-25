@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour{
     
@@ -29,9 +30,9 @@ public class GameManager : MonoBehaviour{
         _Generateur.Regenere();
     }
     public IEnumerator EndGame(){
-        yield return new WaitForSeconds(2f);
-        
-        //fini le jeu
+        yield return new WaitForSeconds(1f);
+        GetComponent<GotoScene>().GotoParamScene("End");
+        _CurrFloor=1;
     }
     void Update() {
         if(Input.GetButtonDown("Enable Debug Button 2")){

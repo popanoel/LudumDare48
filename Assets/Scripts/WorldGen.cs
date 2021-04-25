@@ -9,7 +9,7 @@ public class WorldGen : MonoBehaviour{
     private Cave[,] caves;
     private List<Vector2> takenCaves = new List<Vector2>();
     private int gridX, gridY;
-    private int nbCaves=20;
+    private int nbCaves=15;
     [SerializeField]
     private GameObject _caveObj;
     [SerializeField]
@@ -44,8 +44,8 @@ public class WorldGen : MonoBehaviour{
         takenCaves.Insert(0,Vector2.zero);
         Vector2 checkPos = Vector2.zero;
 
-        //magic numbers
-		float randomCompare = 0.2f, randomCompareStart = 0.2f, randomCompareEnd = 0.01f;
+        //magic numbers //Tweaked 
+		float randomCompare = 0.2f, randomCompareStart = 0.75f, randomCompareEnd = 0.01f;
 		//add Caves
 		for (int i =0; i < nbCaves -1; i++){
 			float randomPerc = ((float) i) / (((float)nbCaves - 1));
@@ -64,6 +64,10 @@ public class WorldGen : MonoBehaviour{
 			}
 			//finalize position
 			caves[(int) checkPos.x + gridX, (int) checkPos.y + gridY] = new Cave(checkPos);
+			//fuck it add ending to last one generated
+			if(i==nbCaves-2){
+				caves[(int) checkPos.x + gridX, (int) checkPos.y + gridY]._isLast=true;
+			}
 			takenCaves.Insert(0,checkPos);
 		}
     }
@@ -152,14 +156,15 @@ public class WorldGen : MonoBehaviour{
 				continue; //skip where there is no room
 			}
 			Vector2 drawPos = cave.gridPos;
-			drawPos.x *= 12;//aspect ratio of map sprite
+			drawPos.x *= 12;//aspect ratio of caves
 			drawPos.y *= 12;
 			//create map obj and assign its variables
 			Room room = Object.Instantiate(_caveObj, drawPos, Quaternion.identity).GetComponent<Room>();
-			room.up = cave.openTop;
-			room.down = cave.openBot;
-			room.right = cave.openRight;
-			room.left = cave.openLeft;
+			room._up = cave.openTop;
+			room._down = cave.openBot;
+			room._right = cave.openRight;
+			room._left = cave.openLeft;
+			room._imLast = cave._isLast;
 			room.gameObject.transform.parent = caveRoot;
 		}
 	}
@@ -195,9 +200,18 @@ public class WorldGen : MonoBehaviour{
 	}
 
     #endregion
-    static public WorldGen GetWorldGen{
-        get{
-            return _instance;
-        }
-    }
+	public void Regenere(){
+		takenCaves=new List<Vector2>();
+		   // make sure we dont try to make more rooms than can fit in our grid
+        if (nbCaves >= (caveSize.x * 2) * (caveSize.y * 2)){ 
+			nbCaves = Mathf.RoundToInt((caveSize.x * 2) * (caveSize.y * 2));
+		}
+
+        gridX = Mathf.RoundToInt(caveSize.x);
+        gridY = Mathf.RoundToInt(caveSize.y);
+
+        Genere();
+        SetRoomDoors();
+        DrawMap();
+	}
 }

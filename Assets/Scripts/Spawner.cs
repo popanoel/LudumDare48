@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour{
     
-    private int _Size=9;
-
+    [SerializeField]
+    private int _Size=10;
+    [SerializeField]
     private float _Spacing=1f;
-
+    [SerializeField]
+    private float _Offset=0.5f;
     [SerializeField]
     private Deco[] _Decos;
 
@@ -22,8 +24,8 @@ public class Spawner : MonoBehaviour{
 
                     if(deco.canPlace()){
 
-                        Vector3 pos = new Vector3(x,y,0f);
-                        Vector3 offset = new Vector3(Random.Range(-_Spacing/3,_Spacing/3),Random.Range(-_Spacing/3,_Spacing/3),0f);
+                        Vector3 pos = new Vector3(transform.position.x+x,transform.position.y+y,0f);
+                        Vector3 offset = new Vector3(Random.Range(-_Offset,_Offset),Random.Range(-_Offset,_Offset),0f);
                         
                         GameObject newDeco = Instantiate(deco.GetRandom());
                         newDeco.transform.SetParent(transform);

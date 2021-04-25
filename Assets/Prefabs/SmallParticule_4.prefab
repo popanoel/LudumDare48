@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 923185900749772977}
   - component: {fileID: 6681523211075082948}
   m_Layer: 0
-  m_Name: Particule_5
+  m_Name: SmallParticule_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1750373075
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: -919482649292894238, guid: 14265bf120b868a4983281f003ca915c,
     type: 3}

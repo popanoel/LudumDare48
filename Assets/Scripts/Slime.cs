@@ -34,4 +34,16 @@ public class Slime : MonoBehaviour{
 
         }
     }
+    public void Smite(){
+        GetComponent<BoxCollider2D>().enabled=false;
+        _IsMoving=true;
+        //Play animation
+        GameObject.Destroy(gameObject,1f);
+        
+    }
+    void OnTriggerEnter2D(Collider2D other) {
+        if(other.tag=="Player"){
+            other.GetComponent<Player>().Die();
+        }
+    }
 }

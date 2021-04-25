@@ -67,18 +67,28 @@ public class Pickaxe : MonoBehaviour{
         }
         if(_CurrState==PickaxeState.Trown){
             if(other.tag=="Evil"){
-                //TODO Wack le Evil
+                other.GetComponent<Slime>().Smite();
                 StopCoroutine(Trow());
                 Land();
+                return;
+            }
+            if(other.tag=="Mur"){
+                Debug.Log("Hit Mur");
+                StopCoroutine(Trow());
+                Land();
+                return;
             }
         }
         if(_CurrState==PickaxeState.Grounded){
             if(other.tag=="Player"){
-                _CurrState=PickaxeState.Held;
+                GetPickedUp();
+                return;
             }
         }
     }
-    
+    public void GetPickedUp(){
+        _CurrState=PickaxeState.Held;
+    }
     void Land(){
 
         _monBody.velocity=Vector2.zero;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMover : MonoBehaviour{
+public class Player : MonoBehaviour{
    //Movement variables
     private float _H=0f;
     private float _V=0f;
@@ -12,6 +12,8 @@ public class PlayerMover : MonoBehaviour{
     [SerializeField][Range(1f,6f)]
     private float _Speed=0f;
 
+    [SerializeField]
+    private Pickaxe _myPick;
     //State bool
     private bool _isBusy=false;
     void Awake(){
@@ -33,9 +35,19 @@ public class PlayerMover : MonoBehaviour{
     }
 
     void FixedUpdate(){
-        _monBody.velocity=new Vector3(_H*_Speed,_V*_Speed,0f);
-        
+        _monBody.velocity=new Vector3(_H*_Speed,_V*_Speed,0f); 
     }
 
+    public void Reset(){
+        _isBusy=true;
+        transform.position=Vector3.zero;
+        _isBusy=false;
+        _myPick.GetPickedUp();
+    }
 
+    public void Die(){
+        _isBusy=true;
+        //Play Animation
+        StartCoroutine(GameManager.GetManager.EndGame());
+    }
 }

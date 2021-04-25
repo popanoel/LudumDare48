@@ -9,6 +9,7 @@ public class Player : MonoBehaviour{
     private Rigidbody2D _monBody;
     private Animator _monAnim;
     private SpriteRenderer _monSpriteRenderer;
+    private AudioSource _monSpeaker;
     // private AudioSource _monSon;
 
     [SerializeField][Range(1f,6f)]
@@ -19,11 +20,19 @@ public class Player : MonoBehaviour{
     //State bool
     private bool _isBusy=false;
     private bool isFlipped = false;
+    [SerializeField]
+    private AudioClip _dies;
+    [SerializeField]
+    private List<AudioClip> _steps;
     void Awake(){
         _monAnim=GetComponent<Animator>();
         _monBody=GetComponent<Rigidbody2D>();
         _monSpriteRenderer=GetComponent<SpriteRenderer>();
+        _monSpeaker=GetComponent<AudioSource>();
     //    _monSon=GetComponent<AudioSource>();
+    }
+    void Start() {
+        StartCoroutine(WalkingSound());
     }
 
     // Update is called once per frame
@@ -60,8 +69,20 @@ public class Player : MonoBehaviour{
 
     public void Die(){
         _isBusy=true;
-        //Play Animation
+        _monSpeaker.PlayOneShot(_dies);
+        //Play Animation ---> Fuck taht
         StartCoroutine(GameManager.GetManager.EndGame());
+    }
+    IEnumerator WalkingSound(){
+        while(true){
+            yield return new WaitForSecondsRealtime(0.5f);
+            if(_H!=0 || _V!=0){
+                _monSpeaker.panStereo*=-1;
+                _monSpeaker.PlayOneShot(_steps[Random.Range(0,_steps.Count)]);
+                
+            }
+        }
+
     }
     void Flip() {
         isFlipped = !isFlipped;

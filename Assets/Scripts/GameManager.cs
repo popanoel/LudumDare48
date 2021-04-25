@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour{
     [SerializeField]
     Player _McRef;
     public int _CurrFloor=1;
-
+    
     void Start() {
          if (_instance != null && _instance != this){
             Destroy(this.gameObject);

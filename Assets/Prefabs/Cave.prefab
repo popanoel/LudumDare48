@@ -239,7 +239,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0d35636ce9c8c284db30b7346a923178, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -319,11 +319,15 @@ MonoBehaviour:
   _Offset: 0.4
   _Decos:
   - name: Evil
-    density: 4
+    density: 5
     prefabs:
     - {fileID: 700404413808267911, guid: 34b710a36069b9648bd8df7f6c46cd3b, type: 3}
   - name: Evil
-    density: 5
+    density: 8
+    prefabs:
+    - {fileID: 700404413808267911, guid: 34b710a36069b9648bd8df7f6c46cd3b, type: 3}
+  - name: Evil
+    density: 9
     prefabs:
     - {fileID: 700404413808267911, guid: 34b710a36069b9648bd8df7f6c46cd3b, type: 3}
 --- !u!1 &6051292760882918160
@@ -434,7 +438,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0d35636ce9c8c284db30b7346a923178, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -516,7 +520,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0d35636ce9c8c284db30b7346a923178, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -714,7 +718,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0d35636ce9c8c284db30b7346a923178, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

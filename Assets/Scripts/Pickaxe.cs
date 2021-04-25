@@ -17,14 +17,22 @@ public class Pickaxe : MonoBehaviour{
     [SerializeField]
     private ParticleSystem _RefParticules;
     private Rigidbody2D _monBody;
+    private AudioSource _monSpeaker;
     private Animator _monAnim;
 
     private Vector2 _MousePos;
+    [SerializeField]
+    private AudioClip _smiteSound;
+    [SerializeField]
+    private AudioClip _missedSound;
+    [SerializeField]
+    private AudioClip _pickedSound;
     
     
     void Awake() {
         _monBody=GetComponent<Rigidbody2D>();
         _monAnim=GetComponent<Animator>();
+        _monSpeaker=GetComponent<AudioSource>();
     }
     void Update() {
         //Si pas dans ta main
@@ -57,24 +65,40 @@ public class Pickaxe : MonoBehaviour{
 
         //After Enough time Land
         yield return new WaitForSeconds(0.5f);
-
+        Debug.Log("land naturaly");
+        _monSpeaker.PlayOneShot(_missedSound);
         Land();
     }
-
+    //Way to comsuming but it fixes a bug with being ablt to throw trough wall
+    private void OnTriggerStay2D(Collider2D other) {
+         if(_CurrState==PickaxeState.Held){
+            return;
+        }
+        if(_CurrState==PickaxeState.Trown){
+            if(other.tag=="Mur"){
+                StopAllCoroutines();
+                _monSpeaker.PlayOneShot(_missedSound);
+                Land();
+                return;
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other) {
         if(_CurrState==PickaxeState.Held){
             return;
         }
         if(_CurrState==PickaxeState.Trown){
             if(other.tag=="Evil"){
+                Debug.Log("Deus Vault");
                 other.GetComponent<Slime>().Smite();
-                StopCoroutine(Trow());
+                _monSpeaker.PlayOneShot(_smiteSound);
+                StopAllCoroutines();
                 Land();
                 return;
             }
             if(other.tag=="Mur"){
-                Debug.Log("Hit Mur");
-                StopCoroutine(Trow());
+                StopAllCoroutines();
+                _monSpeaker.PlayOneShot(_missedSound);
                 Land();
                 return;
             }
@@ -87,10 +111,11 @@ public class Pickaxe : MonoBehaviour{
         }
     }
     public void GetPickedUp(){
+        _monSpeaker.PlayOneShot(_pickedSound);
         _CurrState=PickaxeState.Held;
     }
     void Land(){
-
+    
         _monBody.velocity=Vector2.zero;
         _monAnim.SetBool("IsThrown",false);
         _CurrState=PickaxeState.Grounded;

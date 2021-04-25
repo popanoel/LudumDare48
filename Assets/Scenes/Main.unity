@@ -5583,7 +5583,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab7dea304f88f0a4fb64fad18f772e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Room: {fileID: 0}
+  _caveObj: {fileID: 4867674631894549551, guid: 0a82d87288079f04f85aafc3c11790bd,
+    type: 3}
+  caveRoot: {fileID: 1728258640}
 --- !u!4 &1237696759
 Transform:
   m_ObjectHideFlags: 0
@@ -5743,9 +5745,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1728258640}
-  - component: {fileID: 1728258641}
   m_Layer: 0
-  m_Name: StartingRoom
+  m_Name: CaveRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5765,18 +5766,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1728258641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1728258639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 411ae4914c75cb248912d25a29848b80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2008549091
 GameObject:
   m_ObjectHideFlags: 3

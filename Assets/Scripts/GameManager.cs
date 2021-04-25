@@ -12,9 +12,14 @@ public class GameManager : MonoBehaviour{
     WorldGen _Generateur;
     [SerializeField]
     Player _McRef;
+    [SerializeField]
+    private AudioClip _next;
+    private AudioSource _monSpeaker;
     public int _CurrFloor=1;
     
     void Start() {
+        _monSpeaker=GetComponent<AudioSource>();
+
          if (_instance != null && _instance != this){
             Destroy(this.gameObject);
         } else {
@@ -22,6 +27,7 @@ public class GameManager : MonoBehaviour{
         }
     }
     public void ResetFloor(){
+        _monSpeaker.PlayOneShot(_next);
         _CurrFloor++;
         foreach (Transform child in _MapRoot) {
             Destroy(child.gameObject);

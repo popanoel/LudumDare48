@@ -6,6 +6,11 @@ using DG.Tweening;
 public class Slime : MonoBehaviour{
     private bool _IsMoving=false;
     private float _Speed=0.6f;
+    private Animator _monAnim;
+
+    void Start() {
+        _monAnim=GetComponent<Animator>();
+    }
     void FixedUpdate() {
         if(_IsMoving){
             return;
@@ -37,7 +42,7 @@ public class Slime : MonoBehaviour{
     public void Smite(){
         GetComponent<BoxCollider2D>().enabled=false;
         _IsMoving=true;
-        //Play animation
+        _monAnim.SetTrigger("Die");
         GameObject.Destroy(gameObject,1f);
         
     }

@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: c3e2080bc13b68f62945d94b5673cd2d
+guid: d3fccdf9f9823684d844b8796a396dd7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5362735838549604449
-    second: Beer
+      213: 6863246505373101655
+    second: MC_0
   - first:
-      213: 8285215595028396028
-    second: Alcool
+      213: -1924967503192116523
+    second: MC_1
   - first:
-      213: 9047690492799414569
-    second: Sake
+      213: -6260237620725970975
+    second: MC_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -55,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Beer
+      name: MC_0
       rect:
         serializedVersion: 2
-        x: 64
-        y: 80
-        width: 16
-        height: 16
+        x: 9
+        y: 12
+        width: 12
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 168710905d34c6a40800000000000000
-      internalID: 5362735838549604449
+      spriteID: 75e64b665562f3f50800000000000000
+      internalID: 6863246505373101655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alcool
+      name: MC_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 112
-        width: 16
-        height: 16
+        x: 41
+        y: 12
+        width: 12
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf7b13dcfaffaf270800000000000000
-      internalID: 8285215595028396028
+      spriteID: 5d2301831442945e0800000000000000
+      internalID: -1924967503192116523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sake
+      name: MC_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
-        width: 16
-        height: 16
+        x: 73
+        y: 12
+        width: 12
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,8 +192,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 921fcf4019adf8d70800000000000000
-      internalID: 9047690492799414569
+      spriteID: 1e787175d0b2f19a0800000000000000
+      internalID: -6260237620725970975
       vertices: []
       indices: 
       edges: []

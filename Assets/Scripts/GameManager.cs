@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour{
     }
     public IEnumerator EndGame(){
         yield return new WaitForSeconds(2f);
+        
         //fini le jeu
     }
     void Update() {

@@ -14,10 +14,13 @@ public class Pickaxe : MonoBehaviour{
     private PickaxeState _CurrState=PickaxeState.Held;
     [SerializeField]
     private Transform _RefMc;
+    [SerializeField]
+    private ParticleSystem _RefParticules;
     private Rigidbody2D _monBody;
     private Animator _monAnim;
 
     private Vector2 _MousePos;
+    
     
     void Awake() {
         _monBody=GetComponent<Rigidbody2D>();
@@ -53,11 +56,9 @@ public class Pickaxe : MonoBehaviour{
         _monBody.AddForce(FinalTarget*9,ForceMode2D.Impulse);
 
         //After Enough time Land
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.5f);
 
-        _monBody.velocity=Vector2.zero;
-        _monAnim.SetBool("IsThrown",false);
-        _CurrState=PickaxeState.Grounded;
+        Land();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -67,6 +68,8 @@ public class Pickaxe : MonoBehaviour{
         if(_CurrState==PickaxeState.Trown){
             if(other.tag=="Evil"){
                 //TODO Wack le Evil
+                StopCoroutine(Trow());
+                Land();
             }
         }
         if(_CurrState==PickaxeState.Grounded){
@@ -74,6 +77,15 @@ public class Pickaxe : MonoBehaviour{
                 _CurrState=PickaxeState.Held;
             }
         }
+    }
+    
+    void Land(){
+
+        _monBody.velocity=Vector2.zero;
+        _monAnim.SetBool("IsThrown",false);
+        _CurrState=PickaxeState.Grounded;
+        _RefParticules.Play(true);
+
     }
 
 }

@@ -22,17 +22,21 @@ public class WorldGen : MonoBehaviour{
 
 
        _Rooms=new List<List<Transform>>();
-       Run(Vector2.zero);
+       //Run(Vector2.zero);
+       //StartCoroutine(Go());
        
    }
-
+   /*
+   private IEnumerator Go(){
+        GameObject room= Instantiate(_Room,Vector3.zero,Quaternion.identity,transform);
+   }*/
+/*
    void Run(Vector2 init){
        for(int y=3;y>=-4;y--){
            _Rooms.Add(new List<Transform>());
             for(int x=-5;x<=4;x++){
 
                 Vector3 pos=new Vector3(_ChunkSize*x+init.x,_ChunkSize*y+init.y,0);
-                GameObject room= Instantiate(_Room,pos,Quaternion.identity,transform);
                 room.name="R"+(x+5)+""+(y-3)*-1;
                 room.GetComponent<Room>()._maPos=new Vector2 (x+5,(y-3)*-1);
                 _Rooms[(y-3)*-1].Add(room.transform);
@@ -45,6 +49,7 @@ public class WorldGen : MonoBehaviour{
             }
         }
    }
+   */
 
     static public WorldGen GetWorldGen{
         get{
